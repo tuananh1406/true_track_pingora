@@ -1,0 +1,25 @@
+[Unit]
+Description=True Track Pingora Proxy Service
+After=network.target local-fs.target
+
+[Service]
+User=root 
+WorkingDirectory=/src/true_track_pingora/
+Type=forking
+PIDFile=/src/true_track_pingora/tmp/pingora.pid
+
+Environment=RUST_LOG=info
+Environment=RUST_BACKTRACE=full
+
+# EXECSTART: Khởi động bình thường
+ExecStart=/src/true_track_pingora/true_track_pingora -d -c /src/true_track_pingora/config.yaml
+
+ExecReload=kill -QUIT $MAINPID
+ExecReload=/src/true_track_pingora/true_track_pingora -u -d -c /src/true_track_pingora/config.yaml
+
+# Quản lý lỗi
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

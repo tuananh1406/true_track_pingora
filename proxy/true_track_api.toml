@@ -1,0 +1,23 @@
+allow_hosts = ["huutuananh.com", "huutuananh.id.vn"]
+cf_root_path = "./certs/origin_ca_ecc_root.pem"
+log_folder = "./logs"
+
+[[proxies]]
+name = "truetrack.huutuananh.com"
+upstreams = ["localhost:3000"]
+tls_cert = "./certs/cert_new.pem"
+tls_key = "./certs/key_new.pem"
+tls_client_cert = "./certs/cloudflare.pem"
+is_http_healthcheck = false
+health_check_host = "huutuananh.com"
+health_check_path = "/api-core/healthcheck/"
+
+[[proxies]]
+name = "truetrack.huutuananh.id.vn"
+upstreams = ["localhost:8000"]
+tls_cert = "./certs/cert_id_vn.pem"
+tls_key = "./certs/key_id_vn.pem"
+tls_client_cert = "./certs/cloudflare.pem"
+is_http_healthcheck = true
+health_check_host = "huutuananh.id.vn"
+health_check_path = "/api-core/healthcheck/"

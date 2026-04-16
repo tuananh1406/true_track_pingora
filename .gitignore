@@ -1,0 +1,14 @@
+target/
+*.log
+*.tmp
+*~
+*.swp
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+logs/
+.env
+/target
+.shuttle*
+Secrets*.toml

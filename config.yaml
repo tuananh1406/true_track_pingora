@@ -1,0 +1,7 @@
+---
+version: 1
+threads: 2
+pid_file: /src/true_track_pingora/tmp/pingora.pid
+error_log: /src/true_track_pingora/tmp/pingora_err.log
+upgrade_sock: /src/true_track_pingora/tmp/pingora.sock
+upstream_keepalive_pool_size: 64
